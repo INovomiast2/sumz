@@ -71,7 +71,12 @@ const Demo = () => {
       {/* Result Display */}
       <div className="my-10 max-w-full flex justify-center items-center">
         {isFetching ? (
-          <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
+          <>
+            <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
+            <br />
+            <br />
+            <span className="text-lg text-gray-700 text-center">El Articulo está siendo <span className="grad_one">Resumido</span>...</span>
+          </>
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
             Bueno, eso no deberia haber pasado...

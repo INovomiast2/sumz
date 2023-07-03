@@ -48,6 +48,20 @@ const Demo = () => {
     setTimeout(() => { setCopy(false) }, 3000)
   }
 
+  const handleErease = (article) => {
+    const articlesFromLS = JSON.parse(localStorage.getItem('articles'));
+
+    if (articlesFromLS) {
+      const updatedArticles = articlesFromLS.filter(
+        (item) => item.url !== article.url
+      );
+
+      localStorage.setItem('articles', JSON.stringify(updatedArticles));
+
+      setAllArticles(updatedArticles);
+    }
+
+  }
 
   return (
     <section className="w-full max-w-xl mt-16">
@@ -71,7 +85,7 @@ const Demo = () => {
               <p className="flex-1 text-sm font-medium text-blue-700 truncate font-satoshi">
                 {item.url}
               </p>
-              <div className="w-10">
+              <div className="w-10" onClick={() => handleErease(item.url)}>
                 <img src={trash} alt="trash_icon" className="w-[40%] h-[40%] object-contain hover:text-red-600" />
               </div>
             </div>
